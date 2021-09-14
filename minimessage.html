@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MiniMessage &mdash; Adventure 4.9.1 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/kyori.css" type="text/css" />
+      <link rel="stylesheet" href="_static/tabs.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/tabs.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Platforms" href="platform/index.html" />
+    <link rel="prev" title="Books" href="book.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> Adventure
+          </a>
+              <div class="version">
+                4.9.1
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="getting-started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="audiences.html">Audiences</a></li>
+<li class="toctree-l1"><a class="reference internal" href="text.html">Text (Chat Components)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="serializer/index.html">Text Serializers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bossbar.html">Boss Bars</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sound.html">Sound</a></li>
+<li class="toctree-l1"><a class="reference internal" href="title.html">Titles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="book.html">Books</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">MiniMessage</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#usage">Usage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#api">API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#format">Format</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#the-components">The Components</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#color">Color</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#color-verbose">Color (verbose)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#decoration">Decoration</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#reset">Reset</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#click">Click</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#hover">Hover</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#keybind">Keybind</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#translatable">Translatable</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#insertion">Insertion</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#pre">Pre</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#rainbow">Rainbow</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#gradient">Gradient</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#font">Font</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#markdown">Markdown</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#markdown-flavors">Markdown Flavors</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#placeholder">Placeholder</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#template">Template</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#placeholder-resolver">Placeholder resolver</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#customization">Customization</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#transformations">Transformations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#builder">Builder</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="platform/index.html">Platforms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="migration/index.html">Migrating to Adventure from other APIs</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Adventure</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>MiniMessage</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div class="admonition danger">
+<p class="admonition-title">Danger</p>
+<p>The Adventure docs are currently a <strong>work in progress</strong>. Some areas may have limited coverage or may not be entirely up to date.
+Feel free to join our discord at <a class="reference external" href="https://discord.gg/MMfhJ8F">https://discord.gg/MMfhJ8F</a> if you have any questions.</p>
+</div>
+<section id="minimessage">
+<h1>MiniMessage<a class="headerlink" href="#minimessage" title="Permalink to this headline"></a></h1>
+<p>MiniMessage is a string based format to represent Minecraft chat components in a human-readable
+format that is easy to edit.</p>
+<section id="usage">
+<h2>Usage<a class="headerlink" href="#usage" title="Permalink to this headline"></a></h2>
+<p>Adding the repository</p>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-0-TWF2ZW4=" aria-selected="true" class="sphinx-tabs-tab group-tab" id="tab-0-TWF2ZW4=" name="TWF2ZW4=" role="tab" tabindex="0">Maven</button><button aria-controls="panel-0-R3JhZGxlIChHcm9vdnkp" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-0-R3JhZGxlIChHcm9vdnkp" name="R3JhZGxlIChHcm9vdnkp" role="tab" tabindex="-1">Gradle (Groovy)</button><button aria-controls="panel-0-R3JhZGxlIChLb3RsaW4p" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-0-R3JhZGxlIChLb3RsaW4p" name="R3JhZGxlIChLb3RsaW4p" role="tab" tabindex="-1">Gradle (Kotlin)</button></div><div aria-labelledby="tab-0-TWF2ZW4=" class="sphinx-tabs-panel group-tab" id="panel-0-TWF2ZW4=" name="TWF2ZW4=" role="tabpanel" tabindex="0"><div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;repositories&gt;</span>
+    <span class="c">&lt;!-- ... --&gt;</span>
+    <span class="nt">&lt;repository&gt;</span> <span class="c">&lt;!-- for development builds --&gt;</span>
+      <span class="nt">&lt;id&gt;</span>sonatype-oss-snapshots<span class="nt">&lt;/id&gt;</span>
+      <span class="nt">&lt;url&gt;</span>https://oss.sonatype.org/content/repositories/snapshots/<span class="nt">&lt;/url&gt;</span>
+    <span class="nt">&lt;/repository&gt;</span>
+    <span class="c">&lt;!-- ... --&gt;</span>
+<span class="nt">&lt;/repositories&gt;</span>
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-0-R3JhZGxlIChHcm9vdnkp" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-0-R3JhZGxlIChHcm9vdnkp" name="R3JhZGxlIChHcm9vdnkp" role="tabpanel" tabindex="0"><div class="highlight-groovy notranslate"><div class="highlight"><pre><span></span><span class="n">repositories</span> <span class="o">{</span>
+   <span class="c1">// for development builds</span>
+   <span class="n">maven</span> <span class="o">{</span>
+       <span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;sonatype-oss-snapshots&quot;</span>
+       <span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;https://oss.sonatype.org/content/repositories/snapshots/&quot;</span>
+   <span class="o">}</span>
+   <span class="c1">// for releases</span>
+   <span class="n">mavenCentral</span><span class="o">()</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-0-R3JhZGxlIChLb3RsaW4p" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-0-R3JhZGxlIChLb3RsaW4p" name="R3JhZGxlIChLb3RsaW4p" role="tabpanel" tabindex="0"><div class="highlight-kotlin notranslate"><div class="highlight"><pre><span></span><span class="n">repositories</span> <span class="p">{</span>
+   <span class="c1">// for development builds</span>
+   <span class="n">maven</span><span class="p">(</span><span class="n">url</span> <span class="o">=</span> <span class="s">&quot;https://oss.sonatype.org/content/repositories/snapshots/&quot;</span><span class="p">)</span> <span class="p">{</span>
+       <span class="n">name</span> <span class="o">=</span> <span class="s">&quot;sonatype-oss-snapshots&quot;</span>
+   <span class="p">}</span>
+   <span class="c1">// for releases</span>
+   <span class="n">mavenCentral</span><span class="p">()</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div><p>Declaring the dependency:</p>
+</div>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-1-TWF2ZW4=" aria-selected="true" class="sphinx-tabs-tab group-tab" id="tab-1-TWF2ZW4=" name="TWF2ZW4=" role="tab" tabindex="0">Maven</button><button aria-controls="panel-1-R3JhZGxlIChHcm9vdnkp" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-1-R3JhZGxlIChHcm9vdnkp" name="R3JhZGxlIChHcm9vdnkp" role="tab" tabindex="-1">Gradle (Groovy)</button><button aria-controls="panel-1-R3JhZGxlIChLb3RsaW4p" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-1-R3JhZGxlIChLb3RsaW4p" name="R3JhZGxlIChLb3RsaW4p" role="tab" tabindex="-1">Gradle (Kotlin)</button></div><div aria-labelledby="tab-1-TWF2ZW4=" class="sphinx-tabs-panel group-tab" id="panel-1-TWF2ZW4=" name="TWF2ZW4=" role="tabpanel" tabindex="0"><div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;dependency&gt;</span>
+   <span class="nt">&lt;groupId&gt;</span>net.kyori<span class="nt">&lt;/groupId&gt;</span>
+   <span class="nt">&lt;artifactId&gt;</span>adventure-text-minimessage<span class="nt">&lt;/artifactId&gt;</span>
+   <span class="nt">&lt;version&gt;</span>4.1.0-SNAPSHOT<span class="nt">&lt;/version&gt;</span>
+<span class="nt">&lt;/dependency&gt;</span>
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-1-R3JhZGxlIChHcm9vdnkp" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-1-R3JhZGxlIChHcm9vdnkp" name="R3JhZGxlIChHcm9vdnkp" role="tabpanel" tabindex="0"><div class="highlight-groovy notranslate"><div class="highlight"><pre><span></span><span class="n">dependencies</span> <span class="o">{</span>
+   <span class="n">implementation</span> <span class="s2">&quot;net.kyori:adventure-text-minimessage:4.1.0-SNAPSHOT&quot;</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-1-R3JhZGxlIChLb3RsaW4p" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-1-R3JhZGxlIChLb3RsaW4p" name="R3JhZGxlIChLb3RsaW4p" role="tabpanel" tabindex="0"><div class="highlight-kotlin notranslate"><div class="highlight"><pre><span></span><span class="n">dependencies</span> <span class="p">{</span>
+   <span class="n">implementation</span><span class="p">(</span><span class="s">&quot;net.kyori:adventure-text-minimessage:4.1.0-SNAPSHOT&quot;</span><span class="p">)</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div></div>
+</section>
+<section id="api">
+<h2>API<a class="headerlink" href="#api" title="Permalink to this headline"></a></h2>
+<p>MiniMessage exposes a simple API via the <code class="docutils literal notranslate"><span class="pre">MiniMessage</span></code> class.</p>
+<p>There are two different instances of that interface, <code class="docutils literal notranslate"><span class="pre">get()</span></code> and <code class="docutils literal notranslate"><span class="pre">markdown()</span></code>, the latter one provides basic Markdown support, in addition to the MiniMessage support. More information can be found in the <a class="reference internal" href="#markdown">Markdown</a> section.</p>
+<p>Additional customization of MiniMessage is possible via the <a class="reference internal" href="#builder">Builder</a>.</p>
+<p>MiniMessage allows you to both serialize components into MiniMessage strings and to parse/deserialize MiniMessage strings into components.</p>
+</section>
+<section id="format">
+<h2>Format<a class="headerlink" href="#format" title="Permalink to this headline"></a></h2>
+<p>This library uses tags. Everything you do will be defined with tags. Tags have a start tag and an end tag (the <code class="docutils literal notranslate"><span class="pre">&lt;reset&gt;</span></code> tag is an exception here).
+Start tags are mandatory (obviously), end tags aren’t.
+<code class="docutils literal notranslate"><span class="pre">&lt;yellow&gt;Hello</span> <span class="pre">&lt;blue&gt;World&lt;yellow&gt;!</span></code> and <code class="docutils literal notranslate"><span class="pre">&lt;yellow&gt;Hello</span> <span class="pre">&lt;blue&gt;World&lt;/blue&gt;!</span></code> and even <code class="docutils literal notranslate"><span class="pre">&lt;yellow&gt;Hello</span> <span class="pre">&lt;/yellow&gt;&lt;blue&gt;World&lt;/blue&gt;&lt;yellow&gt;!&lt;/yellow&gt;</span></code> all do the same.</p>
+<p>Some tags have inner tags. Those look like this: <code class="docutils literal notranslate"><span class="pre">&lt;tag:inner&gt;stuff&lt;/tag&gt;</span></code>. For example: <code class="docutils literal notranslate"><span class="pre">&lt;hover:show_text:&quot;&lt;red&gt;test:TEST&quot;&gt;TEST</span></code> or <code class="docutils literal notranslate"><span class="pre">&lt;click:run_command:test&gt;TEST</span></code>
+As you can see, those sometimes contain components, sometimes just strings. Refer to the detailed docs below.</p>
+<p>Single (<code class="docutils literal notranslate"><span class="pre">'</span></code>) and double (<code class="docutils literal notranslate"><span class="pre">&quot;</span></code>) quotes can be used interchangeably, but for your own sanity, please stay consistent, choose one for all your messages. MiniMessage <em>should</em> handle mismatched quotes nicely tho.</p>
+<p>The components try to represent vanilla as closely as possible.
+It might to helpful to use <a class="reference external" href="https://minecraft.gamepedia.com/Raw_JSON_text_format">the minecraft wiki</a> as a reference, especially for stuff like the actions and values of click and hover events.</p>
+<section id="the-components">
+<h3>The Components<a class="headerlink" href="#the-components" title="Permalink to this headline"></a></h3>
+<section id="color">
+<h4>Color<a class="headerlink" href="#color" title="Permalink to this headline"></a></h4>
+<p>Color the next parts</p>
+<dl class="simple">
+<dt>Tag</dt><dd><p><code class="docutils literal notranslate"><span class="pre">&lt;_colorname_&gt;</span></code></p>
+</dd>
+<dt>Arguments</dt><dd><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">_colorname_</span></code>, all minecraft color constants (check <a class="reference external" href="https://github.com/KyoriPowered/adventure/blob/master/api/src/main/java/net/kyori/adventure/text/format/NamedTextColor.java">here</a>), or hex colors</p></li>
+</ul>
+</dd>
+<dt>Examples</dt><dd><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">&lt;yellow&gt;Hello</span> <span class="pre">&lt;blue&gt;World&lt;/blue&gt;!</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&lt;red&gt;This</span> <span class="pre">is</span> <span class="pre">a</span> <span class="pre">&lt;green&gt;test!</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&lt;#00ff00&gt;R</span> <span class="pre">G</span> <span class="pre">B!</span></code></p></li>
+</ul>
+</dd>
+</dl>
+<img alt="https://i.imgur.com/wB32YpZ.png" src="https://i.imgur.com/wB32YpZ.png" />
+<img alt="https://i.imgur.com/vsN3OHa.png" src="https://i.imgur.com/vsN3OHa.png" />
+</section>
+<section id="color-verbose">
+<h4>Color (verbose)<a class="headerlink" href="#color-verbose" title="Permalink to this headline"></a></h4>
+<p>A more verbose way of defining colors</p>
+<dl class="simple">
+<dt>Tag</dt><dd><p><code class="docutils literal notranslate"><span class="pre">&lt;color:_colorNameOrHex_&gt;</span></code></p>
+</dd>
+<dt>Aliases</dt><dd><p><code class="docutils literal notranslate"><span class="pre">colour</span></code>, <code class="docutils literal notranslate"><span class="pre">c</span></code></p>
+</dd>
+<dt>Arguments</dt><dd><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">_colorNameOrHex_</span></code>, can be all the values from above (so named colors or hex colors)</p></li>
+</ul>
+</dd>
+<dt>Examples</dt><dd><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">&lt;color:yellow&gt;Hello</span> <span class="pre">&lt;color:blue&gt;World&lt;/color:blue&gt;!</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&lt;color:#FF5555&gt;This</span> <span class="pre">is</span> <span class="pre">a</span> <span class="pre">&lt;color:#55FF55&gt;test!</span></code></p></li>
+</ul>
+</dd>
+</dl>
+<img alt="https://i.imgur.com/wB32YpZ.png" src="https://i.imgur.com/wB32YpZ.png" />
+<img alt="https://i.imgur.com/vsN3OHa.png" src="https://i.imgur.com/vsN3OHa.png" />
+</section>
+<section id="decoration">
+<h4>Decoration<a class="headerlink" href="#decoration" title="Permalink to this headline"></a></h4>
+<p>Decorate the next parts</p>
+<dl>
+<dt>Tag</dt><dd><p><code class="docutils literal notranslate"><span class="pre">&lt;_decorationname_&gt;</span></code></p>
+</dd>
+<dt>Arguments:</dt><dd><ul>
+<li><div class="line-block">
+<div class="line"><code class="docutils literal notranslate"><span class="pre">_decorationname_</span></code> , all minecraft decorations (<a class="reference external" href="https://github.com/KyoriPowered/adventure/blob/master/api/src/main/java/net/kyori/adventure/text/format/TextDecoration.java">check here</a>)</div>
+<div class="line">Aliases for <code class="docutils literal notranslate"><span class="pre">strikethrough</span></code> -&gt; <code class="docutils literal notranslate"><span class="pre">st</span></code>, <code class="docutils literal notranslate"><span class="pre">obfuscated</span></code> -&gt; <code class="docutils literal notranslate"><span class="pre">obf</span></code>, <code class="docutils literal notranslate"><span class="pre">italic</span></code> -&gt; <code class="docutils literal notranslate"><span class="pre">em</span></code> or <code class="docutils literal notranslate"><span class="pre">i</span></code> and <code class="docutils literal notranslate"><span class="pre">bold</span></code> -&gt; <code class="docutils literal notranslate"><span class="pre">b</span></code> exist</div>
+</div>
+</li>
+</ul>
+</dd>
+<dt>Examples:</dt><dd><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">&lt;underlined&gt;This</span> <span class="pre">is</span> <span class="pre">&lt;bold&gt;important&lt;/bold&gt;!</span></code></p></li>
+</ul>
+</dd>
+</dl>
+<img alt="https://i.imgur.com/hREGXQy.png" src="https://i.imgur.com/hREGXQy.png" />
+</section>
+<section id="reset">
+<h4>Reset<a class="headerlink" href="#reset" title="Permalink to this headline"></a></h4>
+<p>Reset all colors, decorations, hovers etc. Doesn’t have a close tag</p>
+<dl class="simple">
+<dt>Tag</dt><dd><p><code class="docutils literal notranslate"><span class="pre">&lt;reset&gt;</span></code></p>
+</dd>
+<dt>Aliases</dt><dd><p><code class="docutils literal notranslate"><span class="pre">r</span></code></p>
+</dd>
+<dt>Arguments</dt><dd><p>non</p>
+</dd>
+<dt>Examples</dt><dd><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">&lt;yellow&gt;&lt;bold&gt;Hello</span> <span class="pre">&lt;reset&gt;world!</span></code></p></li>
+</ul>
+</dd>
+</dl>
+<img alt="https://i.imgur.com/bjInUhj.png" src="https://i.imgur.com/bjInUhj.png" />
+</section>
+<section id="click">
+<h4>Click<a class="headerlink" href="#click" title="Permalink to this headline"></a></h4>
+<p>Allows doing multiple things when clicking on the component.</p>
+<dl class="simple">
+<dt>Tag</dt><dd><p><code class="docutils literal notranslate"><span class="pre">&lt;click:_action_:_value_&gt;</span></code></p>
+</dd>
+<dt>Arguments</dt><dd><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">_action_</span></code>, the type of click event, one of <a class="reference external" href="https://github.com/KyoriPowered/adventure/blob/master/api/src/main/java/net/kyori/adventure/text/event/ClickEvent.java">this list</a></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">_value_</span></code>, the argument for that particular event, refer to <a class="reference external" href="https://minecraft.gamepedia.com/Raw_JSON_text_format">the minecraft wiki</a></p></li>
+</ul>
+</dd>
+<dt>Examples</dt><dd><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">&lt;click:run_command:/say</span> <span class="pre">hello&gt;Click&lt;/click&gt;</span> <span class="pre">to</span> <span class="pre">say</span> <span class="pre">hello</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Click</span> <span class="pre">&lt;click:copy_to_clipboard:Haha</span> <span class="pre">you</span> <span class="pre">suck&gt;</span> <span class="pre">this</span> <span class="pre">&lt;/click&gt;to</span> <span class="pre">copy</span> <span class="pre">your</span> <span class="pre">score!</span></code></p></li>
+</ul>
+</dd>
+</dl>
+<img alt="https://i.imgur.com/J82qOHn.png" src="https://i.imgur.com/J82qOHn.png" />
+</section>
+<section id="hover">
+<h4>Hover<a class="headerlink" href="#hover" title="Permalink to this headline"></a></h4>
+<p>Allows doing multiple things when hovering on the component.</p>
+<dl class="simple">
+<dt>Tag</dt><dd><p><code class="docutils literal notranslate"><span class="pre">&lt;hover:_action_:_value_</span></code></p>
+</dd>
+<dt>Arguments</dt><dd><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">_action_</span></code>, the type of hover event, one of this <a class="reference external" href="https://github.com/KyoriPowered/adventure/blob/master/api/src/main/java/net/kyori/adventure/text/event/HoverEvent.java">list</a></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">_value_</span></code>, the argument for that particular event, refer to <a class="reference external" href="https://minecraft.gamepedia.com/Raw_JSON_text_format">the minecraft wiki</a></p></li>
+</ul>
+</dd>
+<dt>Examples</dt><dd><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">&lt;hover:show_text:'&lt;red&gt;test'&gt;TEST</span></code></p></li>
+</ul>
+</dd>
+</dl>
+<img alt="https://i.imgur.com/VsHDPTI.png" src="https://i.imgur.com/VsHDPTI.png" />
+</section>
+<section id="keybind">
+<h4>Keybind<a class="headerlink" href="#keybind" title="Permalink to this headline"></a></h4>
+<p>Allows displaying the configured key for actions</p>
+<dl class="simple">
+<dt>Tag</dt><dd><p><code class="docutils literal notranslate"><span class="pre">&lt;key:_key_&gt;</span></code></p>
+</dd>
+<dt>Arguments</dt><dd><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">_key_</span></code>, the keybind identifier of the action</p></li>
+</ul>
+</dd>
+<dt>Examples</dt><dd><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">Press</span> <span class="pre">&lt;red&gt;&lt;key:key.jump&gt;</span> <span class="pre">to</span> <span class="pre">jump!</span></code></p></li>
+</ul>
+</dd>
+</dl>
+<img alt="https://i.imgur.com/iQmNDF6.png" src="https://i.imgur.com/iQmNDF6.png" />
+</section>
+<section id="translatable">
+<h4>Translatable<a class="headerlink" href="#translatable" title="Permalink to this headline"></a></h4>
+<p>Allows displaying minecraft messages using the player locale</p>
+<dl class="simple">
+<dt>Tag</dt><dd><p><code class="docutils literal notranslate"><span class="pre">&lt;lang:_key_:_value1_:_value2_&gt;</span></code></p>
+</dd>
+<dt>Arguments</dt><dd><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">_key_</span></code>, the translation key</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">_valueX_</span></code>, optional values that are used for placeholders in the key (they will end up in the <code class="docutils literal notranslate"><span class="pre">with</span></code> tag in the json)</p></li>
+</ul>
+</dd>
+<dt>Examples</dt><dd><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">You</span> <span class="pre">should</span> <span class="pre">get</span> <span class="pre">a</span> <span class="pre">&lt;lang:block.minecraft.diamond_block&gt;!</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&lt;lang:commands.drop.success.single:'&lt;red&gt;1':'&lt;blue&gt;Stone'&gt;!</span></code></p></li>
+</ul>
+</dd>
+</dl>
+<img alt="https://i.imgur.com/mpdDMF6.png" src="https://i.imgur.com/mpdDMF6.png" />
+<img alt="https://i.imgur.com/esWpnxm.png" src="https://i.imgur.com/esWpnxm.png" />
+</section>
+<section id="insertion">
+<h4>Insertion<a class="headerlink" href="#insertion" title="Permalink to this headline"></a></h4>
+<p>Allow insertion of text into chat via shift click</p>
+<dl class="simple">
+<dt>Tag</dt><dd><p><code class="docutils literal notranslate"><span class="pre">&lt;insertion:_text_&gt;</span></code></p>
+</dd>
+<dt>Arguments</dt><dd><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">_text_</span></code>, the text to insert</p></li>
+</ul>
+</dd>
+<dt>Examples</dt><dd><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">Click</span> <span class="pre">&lt;insert:test&gt;this&lt;/insert&gt;</span> <span class="pre">to</span> <span class="pre">insert!</span></code></p></li>
+</ul>
+</dd>
+</dl>
+<img alt="https://i.imgur.com/Imhom84.png" src="https://i.imgur.com/Imhom84.png" />
+</section>
+<section id="pre">
+<h4>Pre<a class="headerlink" href="#pre" title="Permalink to this headline"></a></h4>
+<p>Tags within this tag will not be parsed, useful for player input for example</p>
+<dl class="simple">
+<dt>Tag</dt><dd><p><code class="docutils literal notranslate"><span class="pre">&lt;pre&gt;</span></code></p>
+</dd>
+<dt>Arguments</dt><dd><p>non</p>
+</dd>
+<dt>Examples</dt><dd><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">&lt;gray&gt;&lt;&lt;yellow&gt;&lt;player&gt;&lt;gray&gt;&gt;</span> <span class="pre">&lt;reset&gt;&lt;pre&gt;&lt;message&gt;&lt;/pre&gt;</span></code></p></li>
+</ul>
+</dd>
+</dl>
+<img alt="https://i.imgur.com/pQqaJnD.png" src="https://i.imgur.com/pQqaJnD.png" />
+</section>
+<section id="rainbow">
+<h4>Rainbow<a class="headerlink" href="#rainbow" title="Permalink to this headline"></a></h4>
+<p>Rainbow colored text?!</p>
+<dl class="simple">
+<dt>Tag</dt><dd><p><code class="docutils literal notranslate"><span class="pre">&lt;rainbow:[phase]&gt;</span></code></p>
+</dd>
+<dt>Arguments</dt><dd><p>phase, optional</p>
+</dd>
+<dt>Examples</dt><dd><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">&lt;yellow&gt;Woo:</span> <span class="pre">&lt;rainbow&gt;||||||||||||||||||||||||&lt;/rainbow&gt;!</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&lt;yellow&gt;Woo:</span> <span class="pre">&lt;rainbow:2&gt;||||||||||||||||||||||||&lt;/rainbow&gt;!</span></code></p></li>
+</ul>
+</dd>
+</dl>
+<img alt="https://i.imgur.com/uNbyoYk.png" src="https://i.imgur.com/uNbyoYk.png" />
+</section>
+<section id="gradient">
+<h4>Gradient<a class="headerlink" href="#gradient" title="Permalink to this headline"></a></h4>
+<p>Gradient colored text</p>
+<dl class="simple">
+<dt>Tag</dt><dd><p><code class="docutils literal notranslate"><span class="pre">&lt;gradient:[color1]:[color...]:[phase]&gt;</span></code></p>
+</dd>
+<dt>Arguments</dt><dd><p>a list of 1 to n colors, either hex or named colors and an optional phase param (range -1 to 1) allows you to shift the gradient around, creating animations.</p>
+</dd>
+<dt>Examples</dt><dd><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">&lt;yellow&gt;Woo:</span> <span class="pre">&lt;gradient&gt;||||||||||||||||||||||||&lt;/gradient&gt;!</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&lt;yellow&gt;Woo:</span> <span class="pre">&lt;gradient:#5e4fa2:#f79459&gt;||||||||||||||||||||||||&lt;/gradient&gt;!</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&lt;yellow&gt;Woo:</span> <span class="pre">&lt;gradient:#5e4fa2:#f79459:red&gt;||||||||||||||||||||||||&lt;/gradient&gt;!</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&lt;yellow&gt;Woo:</span> <span class="pre">&lt;gradient:green:blue&gt;||||||||||||||||||||||||&lt;/gradient&gt;!</span></code></p></li>
+</ul>
+</dd>
+</dl>
+<img alt="https://i.imgur.com/8qYHCWk.png" src="https://i.imgur.com/8qYHCWk.png" />
+</section>
+<section id="font">
+<h4>Font<a class="headerlink" href="#font" title="Permalink to this headline"></a></h4>
+<p>Allows to change the font of the text</p>
+<dl class="simple">
+<dt>Tag</dt><dd><p><code class="docutils literal notranslate"><span class="pre">&lt;font:key&gt;</span></code></p>
+</dd>
+<dt>Arguments</dt><dd><p>the namespaced key of the font</p>
+</dd>
+<dt>Examples</dt><dd><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">Nothing</span> <span class="pre">&lt;font:minecraft:uniform&gt;Uniform</span> <span class="pre">&lt;font:minecraft:alt&gt;Alt</span>&#160; <span class="pre">&lt;/font&gt;</span> <span class="pre">Uniform</span></code></p></li>
+</ul>
+</dd>
+</dl>
+<img alt="https://i.imgur.com/0SjeMQm.png" src="https://i.imgur.com/0SjeMQm.png" />
+</section>
+</section>
+</section>
+<section id="markdown">
+<h2>Markdown<a class="headerlink" href="#markdown" title="Permalink to this headline"></a></h2>
+<p>MiniMessage also comes with a very simple markdown addon. You can enable it by calling <code class="docutils literal notranslate"><span class="pre">MiniMessage.markdown()</span></code> or by using the <a class="reference internal" href="#builder">Builder</a>.</p>
+<p>Note: Markdown will not be escaped when you call <code class="docutils literal notranslate"><span class="pre">escapeTokens</span></code>, <code class="docutils literal notranslate"><span class="pre">stripTokens</span></code> however will work.</p>
+<p>By default, the markdown parser supports the following markup:</p>
+<ul>
+<li><dl>
+<dt>Bold:</dt><dd><p><code class="docutils literal notranslate"><span class="pre">**bold**</span></code> will be transformed into <code class="docutils literal notranslate"><span class="pre">&lt;bold&gt;bold&lt;/bold&gt;</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">__bold__</span></code> will be transformed into <code class="docutils literal notranslate"><span class="pre">&lt;bold&gt;bold&lt;/bold&gt;</span></code> too</p>
+</dd>
+</dl>
+</li>
+<li><dl>
+<dt>Italic:</dt><dd><p><code class="docutils literal notranslate"><span class="pre">*italic*</span></code> will be transformed into <code class="docutils literal notranslate"><span class="pre">&lt;italic&gt;italic&lt;/italic&gt;</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">_italic_</span></code> will be transformed into <code class="docutils literal notranslate"><span class="pre">&lt;italic&gt;italic&lt;/italic&gt;</span></code> too</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Underline:</dt><dd><p><code class="docutils literal notranslate"><span class="pre">~~underline~~</span></code> will be transformed into <code class="docutils literal notranslate"><span class="pre">&lt;underlined&gt;underline&lt;/underlined&gt;</span></code></p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Obfuscated:</dt><dd><p><code class="docutils literal notranslate"><span class="pre">||obfuscated||</span></code> will be transformed into <code class="docutils literal notranslate"><span class="pre">&lt;obfuscated&gt;obfuscated&lt;/obfuscated&gt;</span></code></p>
+</dd>
+</dl>
+</li>
+</ul>
+<p>However, this markup is a bit strange, but now its a too late to change, thats why we got:</p>
+<section id="markdown-flavors">
+<h3>Markdown Flavors<a class="headerlink" href="#markdown-flavors" title="Permalink to this headline"></a></h3>
+<p>What you saw above is the default/legacy favor. It will hopefully eventually be removed.</p>
+<p>To use different markdown flavors, you can use <code class="docutils literal notranslate"><span class="pre">MiniMessage.withMarkdownFlavor(DiscordFlavor.get())</span></code> or the <a class="reference internal" href="#builder">Builder</a>.</p>
+<p>The discord flavor works like this: <code class="docutils literal notranslate"><span class="pre">**bold**,</span> <span class="pre">*italic*,</span> <span class="pre">__underline__,</span> <span class="pre">~~strikethrough~~,</span> <span class="pre">||obfusctated||</span></code></p>
+<p>The github flavor works like this: <code class="docutils literal notranslate"><span class="pre">**bold**,</span> <span class="pre">*italic*,</span> <span class="pre">~~strikethrough~~</span></code></p>
+<p>Additionally, you can implement your own markdown flavors. Take a look at the inbuild flavors for reference!</p>
+</section>
+</section>
+<section id="placeholder">
+<h2>Placeholder<a class="headerlink" href="#placeholder" title="Permalink to this headline"></a></h2>
+<p>MiniMessage provides two systems for placeholders. Depending on how you count. Could be 4 too.</p>
+<p>The easiest one is simple string replacements:
+<code class="docutils literal notranslate"><span class="pre">MiniMessage.get().parse(&quot;&lt;gray&gt;Hello</span> <span class="pre">&lt;name&gt;&quot;,</span> <span class="pre">&quot;name&quot;,</span> <span class="pre">&quot;MiniDigger&quot;)</span></code></p>
+<p>As you can see, placeholders are defined like normal tags in the message, and resolve by a list of key value pairs (you can also pass a <code class="docutils literal notranslate"><span class="pre">Map&lt;String,</span> <span class="pre">String&gt;</span></code> here).</p>
+<dl>
+<dt>These placeholders are resolved before any other tags in the message. This means, replacements can contain MiniMessage tags:</dt><dd><div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="n">String</span> <span class="n">name</span> <span class="o">=</span> <span class="s">&quot;MiniDigger&quot;</span><span class="p">;</span>
+<span class="n">String</span> <span class="n">rank</span> <span class="o">=</span> <span class="s">&quot;&lt;red&gt;[ADMIN]&lt;/red&gt;&quot;</span>
+<span class="n">Map</span><span class="o">&lt;</span><span class="n">String</span><span class="p">,</span> <span class="n">String</span><span class="o">&gt;</span> <span class="n">placeholders</span> <span class="o">=</span> <span class="k">new</span> <span class="n">HashMap</span><span class="o">&lt;&gt;</span><span class="p">();</span>
+<span class="n">placeholders</span><span class="p">.</span><span class="na">put</span><span class="p">(</span><span class="s">&quot;name&quot;</span><span class="p">,</span> <span class="n">rank</span> <span class="o">+</span> <span class="n">name</span><span class="p">);</span>
+<span class="n">MiniMessage</span><span class="p">.</span><span class="na">get</span><span class="p">().</span><span class="na">parse</span><span class="p">(</span><span class="s">&quot;&lt;gray&gt;Hello &lt;name&gt;&quot;</span><span class="p">,</span> <span class="s">&quot;name&quot;</span><span class="p">,</span> <span class="n">placeholders</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+<section id="template">
+<h3>Template<a class="headerlink" href="#template" title="Permalink to this headline"></a></h3>
+<p>A second system, the template system, allows you to choose between string and full components as replacements.
+These are executed in the main parse loop, so the string replacements can not contain MiniMessage Tags!</p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="n">MiniMessage</span><span class="p">.</span><span class="na">get</span><span class="p">().</span><span class="na">parse</span><span class="p">(</span><span class="s">&quot;&lt;gray&gt;Hello &lt;name&gt;&quot;</span><span class="p">,</span> <span class="n">Template</span><span class="p">.</span><span class="na">of</span><span class="p">(</span><span class="s">&quot;name&quot;</span><span class="p">,</span> <span class="n">Component</span><span class="p">.</span><span class="na">text</span><span class="p">(</span><span class="s">&quot;TEST&quot;</span><span class="p">).</span><span class="na">color</span><span class="p">(</span><span class="n">NamedTextColor</span><span class="p">.</span><span class="na">RED</span><span class="p">)));</span>
+<span class="n">MiniMessage</span><span class="p">.</span><span class="na">get</span><span class="p">().</span><span class="na">parse</span><span class="p">(</span><span class="s">&quot;&lt;gray&gt;Hello &lt;name&gt;&quot;</span><span class="p">,</span> <span class="n">Template</span><span class="p">.</span><span class="na">of</span><span class="p">(</span><span class="s">&quot;name&quot;</span><span class="p">,</span> <span class="s">&quot;TEST&quot;</span><span class="p">));</span>
+<span class="n">List</span><span class="o">&lt;</span><span class="n">Template</span><span class="o">&gt;</span> <span class="n">templates</span> <span class="o">=</span> <span class="n">List</span><span class="p">.</span><span class="na">of</span><span class="p">(</span><span class="n">Template</span><span class="p">.</span><span class="na">of</span><span class="p">(</span><span class="s">&quot;name&quot;</span><span class="p">,</span> <span class="s">&quot;TEST&quot;</span><span class="p">),</span> <span class="n">Template</span><span class="p">.</span><span class="na">of</span><span class="p">(</span><span class="s">&quot;name2&quot;</span><span class="p">,</span> <span class="s">&quot;TEST&quot;</span><span class="p">));</span>
+<span class="n">MiniMessage</span><span class="p">.</span><span class="na">get</span><span class="p">().</span><span class="na">parse</span><span class="p">(</span><span class="s">&quot;&lt;gray&gt;Hello &lt;name&gt; and &lt;name2&gt;&quot;</span><span class="p">,</span> <span class="n">Template</span><span class="p">.</span><span class="na">of</span><span class="p">(</span><span class="s">&quot;name&quot;</span><span class="p">,</span> <span class="s">&quot;TEST&quot;</span><span class="p">));</span>
+</pre></div>
+</div>
+<p>These are pretty powerful and allow you to take components you got from elsewhere (for example an itemstack or a placeholder api) and include them in your messages easily.</p>
+</section>
+<section id="placeholder-resolver">
+<h3>Placeholder resolver<a class="headerlink" href="#placeholder-resolver" title="Permalink to this headline"></a></h3>
+<p>To make dealing with (external or internal) placeholder apis even easier, MiniMessage allows you to provide a placeholder resolver.</p>
+<p>A placeholder resolver is just a <code class="docutils literal notranslate"><span class="pre">Function&lt;String,</span> <span class="pre">ComponentLike&gt;</span></code>, that allows you to handle tags without having to define them before hand.
+Just return a Component when you resolved the placeholder, else you return null.</p>
+<p>You can define such a resolver using the builder api (for more info, see the <a class="reference internal" href="#builder">Builder</a> section below):</p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="n">Function</span><span class="o">&lt;</span><span class="n">String</span><span class="p">,</span> <span class="n">ComponentLike</span><span class="o">&gt;</span> <span class="n">resolver</span> <span class="o">=</span> <span class="p">(</span><span class="n">name</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">name</span><span class="p">.</span><span class="na">equalsIgnoreCase</span><span class="p">(</span><span class="s">&quot;test&quot;</span><span class="p">))</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="n">Component</span><span class="p">.</span><span class="na">text</span><span class="p">(</span><span class="s">&quot;TEST&quot;</span><span class="p">).</span><span class="na">color</span><span class="p">(</span><span class="n">NamedTextColor</span><span class="p">.</span><span class="na">RED</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="kc">null</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="n">Component</span> <span class="n">result</span> <span class="o">=</span> <span class="n">MiniMessage</span><span class="p">.</span><span class="na">builder</span><span class="p">().</span><span class="na">placeholderResolver</span><span class="p">(</span><span class="n">resolver</span><span class="p">).</span><span class="na">build</span><span class="p">().</span><span class="na">parse</span><span class="p">(</span><span class="s">&quot;&lt;green&gt;&lt;bold&gt;&lt;test&gt;&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="customization">
+<h2>Customization<a class="headerlink" href="#customization" title="Permalink to this headline"></a></h2>
+<p>MiniMessage is designed to be extended, configured and adjusted to fit your needs.</p>
+<section id="transformations">
+<h3>Transformations<a class="headerlink" href="#transformations" title="Permalink to this headline"></a></h3>
+<p>At the core, its build around the concept of transformations. A transformation is a object, that transforms a component, by changing its style or adding events, some even delete the original component and replace it with new ones.
+Explaining all possibilities would be out of scope for this documentation, if you are interested in implementing your own transformations, look at the inbuild ones as a guide.</p>
+<p>When the parser encounters a start tag, it will look it up in the transformation registry, and if it finds something, the transformation will be loaded (as in, initialized with the tag name and its parameters) and then added to a list.
+When the parser then encounters a string, it will apply all transformations onto that tag.
+When the parser encounters a close tag, the transformation for that tag will be removed from the list again, so that further strings will not be transformed anymore.</p>
+<p>Transformations are registered into the transformation registry using transformation types.
+A transformation type defines a predicate, to check if the given tag can be parsed by the transformation, and a transformation parser, which handles initialization of transformations.</p>
+<p>MiniMessage allows you to pass your own transformation registry, which allows you to both disable inbuild transformation types, only allowing a few transformation types or even passing your own transformation types.
+MiniMessage also provides convenience methods to do that:
+<code class="docutils literal notranslate"><span class="pre">MiniMessage.withTransformations(TransformationType.COLOR).parse(&quot;&lt;green&gt;&lt;bold&gt;Hai&quot;)</span> <span class="pre">==</span> <span class="pre">Component.text(&quot;&lt;bold&gt;Hai&quot;,</span> <span class="pre">NamedTextColor.GREEN)</span></code>
+Bold transformation isn’t enabled -&gt; bold tag is not parsed.</p>
+</section>
+<section id="builder">
+<h3>Builder<a class="headerlink" href="#builder" title="Permalink to this headline"></a></h3>
+<p>To make customizing MiniMessage easier, we provide a Builder. Use is pretty self explanatory:</p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="n">MiniMessage</span> <span class="n">minimessage</span> <span class="o">=</span> <span class="n">MiniMessage</span><span class="p">.</span><span class="na">builder</span><span class="p">()</span>
+    <span class="p">.</span><span class="na">removeDefaultTransformations</span><span class="p">()</span>
+    <span class="p">.</span><span class="na">transformation</span><span class="p">(</span><span class="n">TransformationType</span><span class="p">.</span><span class="na">COLOR</span><span class="p">)</span>
+    <span class="p">.</span><span class="na">transformation</span><span class="p">(</span><span class="n">TransformationType</span><span class="p">.</span><span class="na">DECORATION</span><span class="p">)</span>
+    <span class="p">.</span><span class="na">markdown</span><span class="p">()</span>
+    <span class="p">.</span><span class="na">markdownFlavor</span><span class="p">(</span><span class="n">DiscordFlavor</span><span class="p">.</span><span class="na">get</span><span class="p">())</span>
+    <span class="p">.</span><span class="na">placeholderResolver</span><span class="p">(</span><span class="k">this</span><span class="p">::</span><span class="n">resolvePlaceholder</span><span class="p">)</span>
+    <span class="p">.</span><span class="na">build</span><span class="p">();</span>
+</pre></div>
+</div>
+<p>Hint: its a good idea to initialize such a MiniMessage instance once, in a central location, and then use it for all your messages.
+Exception being if you want to customize MiniMessage based on permissions of a user (for example, admins should be allowed to use color and decoration in the message, normal users not)</p>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="book.html" class="btn btn-neutral float-left" title="Books" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="platform/index.html" class="btn btn-neutral float-right" title="Platforms" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2020-2021, KyoriPowered.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

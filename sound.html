@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sound &mdash; Adventure 4.9.1 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/kyori.css" type="text/css" />
+      <link rel="stylesheet" href="_static/tabs.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Titles" href="title.html" />
+    <link rel="prev" title="Boss Bars" href="bossbar.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> Adventure
+          </a>
+              <div class="version">
+                4.9.1
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="getting-started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="audiences.html">Audiences</a></li>
+<li class="toctree-l1"><a class="reference internal" href="text.html">Text (Chat Components)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="serializer/index.html">Text Serializers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bossbar.html">Boss Bars</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Sound</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#constructing-a-sound">Constructing a Sound</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#playing-a-sound">Playing a Sound</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#stopping-sounds">Stopping Sounds</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#creating-a-custom-sound">Creating a custom sound</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="title.html">Titles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="book.html">Books</a></li>
+<li class="toctree-l1"><a class="reference internal" href="minimessage.html">MiniMessage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="platform/index.html">Platforms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="migration/index.html">Migrating to Adventure from other APIs</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Adventure</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>Sound</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div class="admonition danger">
+<p class="admonition-title">Danger</p>
+<p>The Adventure docs are currently a <strong>work in progress</strong>. Some areas may have limited coverage or may not be entirely up to date.
+Feel free to join our discord at <a class="reference external" href="https://discord.gg/MMfhJ8F">https://discord.gg/MMfhJ8F</a> if you have any questions.</p>
+</div>
+<section id="sound">
+<h1>Sound<a class="headerlink" href="#sound" title="Permalink to this headline"></a></h1>
+<p>Adventure contains an API to play any built-in or resource pack-provided sound. Note that
+not all platforms implement playing sound.</p>
+<section id="constructing-a-sound">
+<h2>Constructing a Sound<a class="headerlink" href="#constructing-a-sound" title="Permalink to this headline"></a></h2>
+<dl class="simple">
+<dt>Sounds are composed of:</dt><dd><ul class="simple">
+<li><p>A Key (also known as <code class="docutils literal notranslate"><span class="pre">Identifier</span></code> or <code class="docutils literal notranslate"><span class="pre">ResourceLocation</span></code>) that decides which sound to play. Any custom sounds from resource packs can be used. If a client does not know about sounds, it will ignore the sound (though a warning will be printed to the client log).</p></li>
+<li><p>A Sound source, used to tell the client what type of sound its hearing. The clients sound settings are also attributed to a source.</p></li>
+<li><p>A number, determining the radius where the sound can be heard</p></li>
+<li><p>A number from 0 to 2 determining the pitch the sound will be played at</p></li>
+</ul>
+</dd>
+</dl>
+<p><strong>Examples:</strong></p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="c1">// Create a built-in sound using standard volume and pitch</span>
+<span class="n">Sound</span> <span class="n">musicDisc</span> <span class="o">=</span> <span class="n">Sound</span><span class="p">.</span><span class="na">sound</span><span class="p">(</span><span class="n">Key</span><span class="p">.</span><span class="na">key</span><span class="p">(</span><span class="s">&quot;music_disc.13&quot;</span><span class="p">),</span> <span class="n">Sound</span><span class="p">.</span><span class="na">Source</span><span class="p">.</span><span class="na">MUSIC</span><span class="p">,</span> <span class="mf">1f</span><span class="p">,</span> <span class="mf">1f</span><span class="p">);</span>
+
+<span class="c1">// Create a sound from our resource pack with a higher pitch</span>
+<span class="n">Sound</span> <span class="n">myCustomSound</span> <span class="o">=</span> <span class="n">Sound</span><span class="p">.</span><span class="na">sound</span><span class="p">(</span><span class="n">Key</span><span class="p">.</span><span class="na">key</span><span class="p">(</span><span class="s">&quot;adventure&quot;</span><span class="p">,</span> <span class="s">&quot;rawr&quot;</span><span class="p">),</span> <span class="n">Sound</span><span class="p">.</span><span class="na">Source</span><span class="p">.</span><span class="na">AMBIENT</span><span class="p">,</span> <span class="mf">1f</span><span class="p">,</span> <span class="mf">1.1f</span><span class="p">);</span>
+</pre></div>
+</div>
+</section>
+<section id="playing-a-sound">
+<h2>Playing a Sound<a class="headerlink" href="#playing-a-sound" title="Permalink to this headline"></a></h2>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<ul class="simple">
+<li><p>The client can play multiple sounds at once, but as of version 1.16 is limited to 8 sounds playing at once.</p></li>
+<li><p>Due to <a class="reference external" href="https://bugs.mojang.com/browse/MC-138832">MC-138832</a>, the volume and pitch of sounds played with an emitter may be ignored.</p></li>
+</ul>
+</div>
+<p>Once you’ve created a sound, they can be played to an audience using multiple methods:</p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="c1">// Play a sound at the location of the audience</span>
+<span class="n">audience</span><span class="p">.</span><span class="na">playSound</span><span class="p">(</span><span class="n">sound</span><span class="p">);</span>
+
+<span class="c1">// Play a sound at a specific location</span>
+<span class="n">audience</span><span class="p">.</span><span class="na">playSound</span><span class="p">(</span><span class="n">sound</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">150</span><span class="p">);</span>
+
+<span class="c1">// Play a sound that follows the audience member</span>
+<span class="n">audience</span><span class="p">.</span><span class="na">playSound</span><span class="p">(</span><span class="n">sound</span><span class="p">,</span> <span class="n">Sound</span><span class="p">.</span><span class="na">Emitter</span><span class="p">.</span><span class="na">self</span><span class="p">());</span>
+
+<span class="c1">// Play a sound that follows another emitter (usually an entity)</span>
+<span class="n">audience</span><span class="p">.</span><span class="na">playSound</span><span class="p">(</span><span class="n">sound</span><span class="p">,</span> <span class="n">someEntity</span><span class="p">);</span>
+</pre></div>
+</div>
+</section>
+<section id="stopping-sounds">
+<h2>Stopping Sounds<a class="headerlink" href="#stopping-sounds" title="Permalink to this headline"></a></h2>
+<p>A sound stop will stop the chosen sounds – ranging from every sound the client is playing, to specific named sounds.</p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span> <span class="kd">public</span> <span class="kt">void</span> <span class="nf">stopMySound</span><span class="p">(</span><span class="kd">final</span> <span class="nd">@NonNull</span> <span class="n">Audience</span> <span class="n">target</span><span class="p">)</span> <span class="p">{</span>
+  <span class="c1">// Stop a sound for the target</span>
+  <span class="n">target</span><span class="p">.</span><span class="na">stopSound</span><span class="p">(</span><span class="n">SoundStop</span><span class="p">.</span><span class="na">named</span><span class="p">(</span><span class="n">Key</span><span class="p">.</span><span class="na">key</span><span class="p">(</span><span class="s">&quot;music_disc.13&quot;</span><span class="p">));</span>
+  <span class="c1">// Stop all weather sounds for the target</span>
+  <span class="n">target</span><span class="p">.</span><span class="na">stopSound</span><span class="p">(</span><span class="n">SoundStop</span><span class="p">.</span><span class="na">source</span><span class="p">(</span><span class="n">Sound</span><span class="p">.</span><span class="na">Source</span><span class="p">.</span><span class="na">WEATHER</span><span class="p">));</span>
+  <span class="c1">// Stop all sounds for the target</span>
+  <span class="n">target</span><span class="p">.</span><span class="na">stopSound</span><span class="p">(</span><span class="n">SoundStop</span><span class="p">.</span><span class="na">all</span><span class="p">());</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Sound stops can be constructed using the methods in the example block above.
+Alternatively, they can be constructed directly from a sound.</p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="c1">// Get a sound stop that will stop a specific sound</span>
+<span class="n">mySound</span><span class="p">.</span><span class="na">asStop</span><span class="p">();</span>
+
+<span class="c1">// Sounds can also be stopped directly using the stopSound method</span>
+<span class="n">audience</span><span class="p">.</span><span class="na">stopSound</span><span class="p">(</span><span class="n">mySound</span><span class="p">);</span>
+</pre></div>
+</div>
+</section>
+<section id="creating-a-custom-sound">
+<h2>Creating a custom sound<a class="headerlink" href="#creating-a-custom-sound" title="Permalink to this headline"></a></h2>
+<p>Use the <code class="docutils literal notranslate"><span class="pre">sounds.json</span></code> to define sounds in a resource pack. Further reading about this limits can be done at the <a class="reference external" href="https://minecraft.gamepedia.com/Sounds.json">Minecraft Wiki</a></p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="bossbar.html" class="btn btn-neutral float-left" title="Boss Bars" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="title.html" class="btn btn-neutral float-right" title="Titles" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2020-2021, KyoriPowered.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

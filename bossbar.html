@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Boss Bars &mdash; Adventure 4.9.1 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/kyori.css" type="text/css" />
+      <link rel="stylesheet" href="_static/tabs.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Sound" href="sound.html" />
+    <link rel="prev" title="Plain" href="serializer/plain.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> Adventure
+          </a>
+              <div class="version">
+                4.9.1
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="getting-started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="audiences.html">Audiences</a></li>
+<li class="toctree-l1"><a class="reference internal" href="text.html">Text (Chat Components)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="serializer/index.html">Text Serializers</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Boss Bars</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#constructing-a-boss-bar">Constructing a Boss Bar</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#changing-an-active-boss-bar">Changing an active Boss Bar</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="sound.html">Sound</a></li>
+<li class="toctree-l1"><a class="reference internal" href="title.html">Titles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="book.html">Books</a></li>
+<li class="toctree-l1"><a class="reference internal" href="minimessage.html">MiniMessage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="platform/index.html">Platforms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="migration/index.html">Migrating to Adventure from other APIs</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Adventure</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>Boss Bars</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div class="admonition danger">
+<p class="admonition-title">Danger</p>
+<p>The Adventure docs are currently a <strong>work in progress</strong>. Some areas may have limited coverage or may not be entirely up to date.
+Feel free to join our discord at <a class="reference external" href="https://discord.gg/MMfhJ8F">https://discord.gg/MMfhJ8F</a> if you have any questions.</p>
+</div>
+<section id="boss-bars">
+<h1>Boss Bars<a class="headerlink" href="#boss-bars" title="Permalink to this headline"></a></h1>
+<section id="constructing-a-boss-bar">
+<h2>Constructing a Boss Bar<a class="headerlink" href="#constructing-a-boss-bar" title="Permalink to this headline"></a></h2>
+<dl class="simple">
+<dt>Boss Bars are composed of:</dt><dd><ul class="simple">
+<li><p>A component used for the title of the boss bar</p></li>
+<li><p>A number from 0 to 1 used to determine how full the boss bar should be</p></li>
+<li><p>A color, will be downsampeled for clients &lt;1.9</p></li>
+<li><p>An overlay that determines the amount of visual segments on the boss bar</p></li>
+</ul>
+</dd>
+</dl>
+<p><strong>Examples:</strong></p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kd">private</span> <span class="nd">@Nullable</span> <span class="n">BossBar</span> <span class="n">activeBar</span><span class="p">;</span>
+
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">showMyBossBar</span><span class="p">(</span><span class="kd">final</span> <span class="nd">@NonNull</span> <span class="n">Audience</span> <span class="n">target</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">final</span> <span class="n">Component</span> <span class="n">name</span> <span class="o">=</span> <span class="n">Component</span><span class="p">.</span><span class="na">text</span><span class="p">(</span><span class="s">&quot;Awesome BossBar&quot;</span><span class="p">);</span>
+  <span class="c1">// Creates a red boss bar which has no progress and no notches</span>
+  <span class="kd">final</span> <span class="n">BossBar</span> <span class="n">emptyBar</span> <span class="o">=</span> <span class="n">BossBar</span><span class="p">.</span><span class="na">bossBar</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">BossBar</span><span class="p">.</span><span class="na">Color</span><span class="p">.</span><span class="na">RED</span><span class="p">,</span> <span class="n">BossBar</span><span class="p">.</span><span class="na">Overlay</span><span class="p">.</span><span class="na">PROGRESS</span><span class="p">);</span>
+  <span class="c1">// Creates a green boss bar which has 50% progress and 10 notches</span>
+  <span class="kd">final</span> <span class="n">BossBar</span> <span class="n">halfBar</span> <span class="o">=</span> <span class="n">BossBar</span><span class="p">.</span><span class="na">bossBar</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="mf">0.5f</span><span class="p">,</span> <span class="n">BossBar</span><span class="p">.</span><span class="na">Color</span><span class="p">.</span><span class="na">GREEN</span><span class="p">,</span> <span class="n">BossBar</span><span class="p">.</span><span class="na">Overlay</span><span class="p">.</span><span class="na">NOTCHED_10</span><span class="p">);</span>
+  <span class="c1">// etc..</span>
+  <span class="kd">final</span> <span class="n">BossBar</span> <span class="n">fullBar</span> <span class="o">=</span> <span class="n">BossBar</span><span class="p">.</span><span class="na">bossBar</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">BossBar</span><span class="p">.</span><span class="na">Color</span><span class="p">.</span><span class="na">BLUE</span><span class="p">,</span> <span class="n">BossBar</span><span class="p">.</span><span class="na">Overlay</span><span class="p">.</span><span class="na">NOTCHED_20</span><span class="p">);</span>
+
+  <span class="c1">// Send a bossbar to your audience</span>
+  <span class="n">target</span><span class="p">.</span><span class="na">showBossBar</span><span class="p">(</span><span class="n">fullBar</span><span class="p">);</span>
+
+  <span class="c1">// Store it locally to be able to hide it manually later</span>
+  <span class="k">this</span><span class="p">.</span><span class="na">activeBar</span> <span class="o">=</span> <span class="n">fullBar</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">hideActiveBossBar</span><span class="p">(</span><span class="kd">final</span> <span class="nd">@NonNull</span> <span class="n">Audience</span> <span class="n">target</span><span class="p">)</span> <span class="p">{</span>
+  <span class="n">target</span><span class="p">.</span><span class="na">hideBossBar</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="na">activeBar</span><span class="p">);</span>
+  <span class="k">this</span><span class="p">.</span><span class="na">activeBar</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="changing-an-active-boss-bar">
+<h2>Changing an active Boss Bar<a class="headerlink" href="#changing-an-active-boss-bar" title="Permalink to this headline"></a></h2>
+<p>Boss bars are mutable and listen for changes on their object,
+the in-game view will change automatically without having to manually refresh it!</p>
+<p>Therefore, if this boss bar is currently active</p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kd">final</span> <span class="n">BossBar</span> <span class="n">bossBar</span> <span class="o">=</span> <span class="n">BossBar</span><span class="p">.</span><span class="na">bossBar</span><span class="p">(</span><span class="n">Component</span><span class="p">.</span><span class="na">text</span><span class="p">(</span><span class="s">&quot;Cat counter&quot;</span><span class="p">),</span> <span class="mi">0</span><span class="p">,</span> <span class="n">BossBar</span><span class="p">.</span><span class="na">Color</span><span class="p">.</span><span class="na">RED</span><span class="p">,</span> <span class="n">BossBar</span><span class="p">.</span><span class="na">Overlay</span><span class="p">.</span><span class="na">PROGRESS</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>and <code class="docutils literal notranslate"><span class="pre">#name()</span></code> with a component is called</p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kd">final</span> <span class="n">Component</span> <span class="n">newText</span> <span class="o">=</span> <span class="n">Component</span><span class="p">.</span><span class="na">text</span><span class="p">(</span><span class="s">&quot;Duck counter&quot;</span><span class="p">);</span>
+
+<span class="n">bossBar</span><span class="p">.</span><span class="na">name</span><span class="p">(</span><span class="n">newText</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>the boss bar will be updated automatically. The same thing goes for <code class="docutils literal notranslate"><span class="pre">progress</span></code>, <code class="docutils literal notranslate"><span class="pre">color</span></code> and <code class="docutils literal notranslate"><span class="pre">overlay</span></code>.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="serializer/plain.html" class="btn btn-neutral float-left" title="Plain" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="sound.html" class="btn btn-neutral float-right" title="Sound" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2020-2021, KyoriPowered.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

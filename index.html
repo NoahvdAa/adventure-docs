@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Adventure &mdash; Adventure 4.9.1 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/kyori.css" type="text/css" />
+      <link rel="stylesheet" href="_static/tabs.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Getting Started" href="getting-started.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="#" class="icon icon-home"> Adventure
+          </a>
+              <div class="version">
+                4.9.1
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="getting-started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="audiences.html">Audiences</a></li>
+<li class="toctree-l1"><a class="reference internal" href="text.html">Text (Chat Components)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="serializer/index.html">Text Serializers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bossbar.html">Boss Bars</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sound.html">Sound</a></li>
+<li class="toctree-l1"><a class="reference internal" href="title.html">Titles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="book.html">Books</a></li>
+<li class="toctree-l1"><a class="reference internal" href="minimessage.html">MiniMessage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="platform/index.html">Platforms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="migration/index.html">Migrating to Adventure from other APIs</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="#">Adventure</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="#" class="icon icon-home"></a> &raquo;</li>
+      <li>Adventure</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div class="admonition danger">
+<p class="admonition-title">Danger</p>
+<p>The Adventure docs are currently a <strong>work in progress</strong>. Some areas may have limited coverage or may not be entirely up to date.
+Feel free to join our discord at <a class="reference external" href="https://discord.gg/MMfhJ8F">https://discord.gg/MMfhJ8F</a> if you have any questions.</p>
+</div>
+<section id="adventure">
+<h1>Adventure<a class="headerlink" href="#adventure" title="Permalink to this headline"></a></h1>
+<p>Adventure is a library for server-controllable user interface elements in <em>Minecraft: Java Edition</em>.</p>
+<section id="table-of-contents">
+<h2>Table of Contents<a class="headerlink" href="#table-of-contents" title="Permalink to this headline"></a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="getting-started.html">Getting Started</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="getting-started.html#using-snapshot-builds">Using Snapshot Builds</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="audiences.html">Audiences</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="audiences.html#pointers">Pointers</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="text.html">Text (Chat Components)</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="text.html#creating-components">Creating components</a></li>
+<li class="toctree-l2"><a class="reference internal" href="text.html#styling-components">Styling components</a></li>
+<li class="toctree-l2"><a class="reference internal" href="text.html#events">Events</a></li>
+<li class="toctree-l2"><a class="reference internal" href="text.html#serializing-and-deserializing-components">Serializing and deserializing components</a></li>
+<li class="toctree-l2"><a class="reference internal" href="text.html#using-components-within-your-application">Using components within your application</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="serializer/index.html">Text Serializers</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="serializer/gson.html">Gson</a></li>
+<li class="toctree-l2"><a class="reference internal" href="serializer/legacy.html">Legacy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="serializer/plain.html">Plain</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="bossbar.html">Boss Bars</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="bossbar.html#constructing-a-boss-bar">Constructing a Boss Bar</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bossbar.html#changing-an-active-boss-bar">Changing an active Boss Bar</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="sound.html">Sound</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="sound.html#constructing-a-sound">Constructing a Sound</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sound.html#playing-a-sound">Playing a Sound</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sound.html#stopping-sounds">Stopping Sounds</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sound.html#creating-a-custom-sound">Creating a custom sound</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="title.html">Titles</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="title.html#constructing-a-title">Constructing a Title</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="book.html">Books</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="book.html#constructing-a-book">Constructing a Book</a></li>
+<li class="toctree-l2"><a class="reference internal" href="book.html#extra-info-regarding-books">Extra info regarding Books</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="minimessage.html">MiniMessage</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="minimessage.html#usage">Usage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="minimessage.html#api">API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="minimessage.html#format">Format</a></li>
+<li class="toctree-l2"><a class="reference internal" href="minimessage.html#markdown">Markdown</a></li>
+<li class="toctree-l2"><a class="reference internal" href="minimessage.html#placeholder">Placeholder</a></li>
+<li class="toctree-l2"><a class="reference internal" href="minimessage.html#customization">Customization</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="platform/index.html">Platforms</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="platform/native.html">Native Support</a></li>
+<li class="toctree-l2"><a class="reference internal" href="platform/bukkit.html">Bukkit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="platform/bungeecord.html">BungeeCord</a></li>
+<li class="toctree-l2"><a class="reference internal" href="platform/spongeapi.html">SpongeAPI</a></li>
+<li class="toctree-l2"><a class="reference internal" href="platform/fabric.html">Fabric</a></li>
+<li class="toctree-l2"><a class="reference internal" href="platform/viaversion.html">ViaVersion</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="migration/index.html">Migrating to Adventure from other APIs</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="migration/bungeecord-chat-api.html">Migrating from the BungeeCord Chat API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="migration/text-3.x.html">Migrating from text 3.x</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<section id="indices-and-tables">
+<h3>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Permalink to this headline"></a></h3>
+<ul class="simple">
+<li><p><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></p></li>
+<li><p><a class="reference internal" href="search.html"><span class="std std-ref">Search Page</span></a></p></li>
+</ul>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="getting-started.html" class="btn btn-neutral float-right" title="Getting Started" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2020-2021, KyoriPowered.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
